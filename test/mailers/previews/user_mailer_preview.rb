@@ -10,8 +10,16 @@ class UserMailerPreview < ActionMailer::Preview
   end
 
   # Preview this email at
-  # ttp://projeto-tpei6-davidrosa.c9users.io/rails/mailers/user_mailer/password_reset
+  # http://projeto-tpei6-davidrosa.c9users.io/rails/mailers/user_mailer/password_reset
   def password_reset
     UserMailer.password_reset
+  end
+  
+    # Preview this email at
+  # http://projeto-tpei6-davidrosa.c9users.io/rails/mailers/user_mailer/password_reset
+  def password_reset
+    user = User.first
+    user.reset_token = User.new_token
+    UserMailer.password_reset(user)
   end
 end
